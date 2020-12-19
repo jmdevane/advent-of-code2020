@@ -15,19 +15,15 @@ data.close()
 eta = int(raw.split('\n')[0])
 all_buses = list((raw.split('\n')[1]).split(','))
 running = [int(i) for i in all_buses if i != 'x']
-sched = np.zeros((eta, len(running)))
-# schedule = pd.DataFrame(columns=running, data=sched)
-
 time = eta #start waiting when you've arrived
 leaving_now = False #are you leaving at this time
-bus_here = np.array([False] * len(running)) # has one of the buses arrived in this time period?
 
 while leaving_now == False:
     
     print(time)    
     buses = np.divide(time, running)
     floor = np.floor(np.divide(time, running))
-    bus_here = any(buses == floor)
+    bus_here = any(buses == floor) # has one of the buses arrived in this time period?
     if bus_here == True:
         bus_id = running[np.argmax(np.where(buses == floor, 1, 0))]
         leaving_now = True
