@@ -6,7 +6,6 @@ ADVENT OF CODE 2020 DAY 13
 
 @author: murph
 """
-import pandas as pd
 import numpy as np
 
 data = open('c:/Users/murph/Documents/projects/advent of code/input13.txt')
